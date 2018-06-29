@@ -1,0 +1,31 @@
+# my_django_blog
+这是我用django做的一个博客。
+
+
+后台账号  hanjiao
+后台密码  han123!@#
+
+Email root@google.com
+
+
+
+Django 创建超级用户
+
+首先我们要新建一个用户名，用来登陆管理网站，可以使用如下命令：
+python manage.py createsuperuser
+
+输入想要使用的用户名：
+Username (leave blank to use 'administrator'): user01
+
+输入email：
+Email address: (在这里输入你的自己的邮箱帐号)
+
+输入密码，需要输入两次，并且输入密码时不会显示出来：
+Password:
+Password (again):
+
+当两次密码都相同的时候，就会提示超级帐号创建成功。
+Superuser created successfully.
+
+运行服务：
+python manage.py runserver

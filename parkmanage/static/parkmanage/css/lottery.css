@@ -1,0 +1,26 @@
+#one{
+    height: 100px;
+    width: 200px;
+    background-color: #79aec8;
+    margin: auto;
+}
+
+#two{
+    height: 100px;
+    width: 200px;
+    background-color:#5b80b2;
+        margin: auto;
+
+}
+
+#three{
+    height: 100px;
+    width: 200px;
+    background-color: #609ab6;
+        margin: auto;
+}
+
+.num{
+    padding-left: 90px;
+    padding-top: 40px;
+}
