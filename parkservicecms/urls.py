@@ -24,9 +24,12 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-#把post/开头的网址后面的字符串都找出来。
+    # 用户url入口
+    url(r'', include('users.urls')),
+
     url(r'^api/', include('parkmanage.urls')),
     url(r'^$',TemplateView.as_view(template_name='index.html')),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
