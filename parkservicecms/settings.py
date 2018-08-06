@@ -13,8 +13,21 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+### 自建APP
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+
+
+## 第三方APP
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
+
 
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -41,6 +54,8 @@ INSTALLED_APPS = [
     'parkmanage',
     'users'
 ]
+
+AUTH_USER_MODEL = 'users.UserProfile'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

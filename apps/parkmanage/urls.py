@@ -16,14 +16,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
 #把post/开头的网址后面的字符串都找出来。
-    url(r'^index', views.index,name='index'),
-    url(r'^login', views.login,name='login'),
+    url(r'^index', views.index, name='index'),
+    url(r'^login', views.login, name='login'),
     url(r'^parkinfo', views.parkinfo, name='parkinfo'),
     url(r'^employeeinfo', views.employeeinfo, name='employeeinfo'),
     url(r'^test', views.test, name='test'),

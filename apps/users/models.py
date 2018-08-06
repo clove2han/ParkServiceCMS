@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# _*_coding:utf-8_*_
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -12,7 +12,7 @@ from django.db.models import Q
 
 class UserDepartment(models.Model):
     name = models.CharField(verbose_name='部门名称',max_length=50)
-    desc = models.CharField(verbose_name='部门描述',max_length=200,blank=True,mull=True)
+    desc = models.CharField(verbose_name='部门描述',max_length=200,blank=True,null=True)
     add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
 
     class Meta:
@@ -28,7 +28,7 @@ class UserDepartment(models.Model):
 ########################################
 class UserPosition(models.Model):
     name = models.CharField(verbose_name='职位名称', max_length=20,)
-    desc = models.CharField(verbose_name='职位描述', max_length=200, blank=True, mull=True)
+    desc = models.CharField(verbose_name='职位描述', max_length=200, blank=True, null=True)
     add_time = models.DateTimeField(verbose_name='添加时间', auto_now_add=True)
 
     class Meta:
@@ -54,15 +54,15 @@ class UserProfile(AbstractUser):
     user_id = models.CharField(verbose_name='员工ID',max_length=10,blank=True, null=True)
     user_name = models.CharField(verbose_name='员工姓名',max_length=10,blank=True, null=True)
     mobile = models.CharField(verbose_name='手机号码', max_length=20, blank=True, null=True)
-    department = models.ForeignKey(UserDepartment, verbose_name='部门', blank=True, null=True)
-    position = models.ForeignKey(UserPosition, verbose_name='职位', blank=True, null=True)
+    department = models.ForeignKey(UserDepartment, related_name='user_department',verbose_name='部门', blank=True, null=True)
+    position = models.ForeignKey(UserPosition, related_name='user_position',verbose_name='职位', blank=True, null=True)
     desc = models.TextField(verbose_name='其他', blank=True, null=True)
     state = models.CharField(verbose_name='状态',max_length=1,default=1)
     account = models.CharField(verbose_name='账号',max_length=10,blank=True, null=True)
     password = models.CharField(verbose_name='密码',max_length=50,blank=True, null=True)
 
     class Meta:
-        verbose_name ='用户'
+        verbose_name ='用户1'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -73,7 +73,7 @@ class UserProfile(AbstractUser):
 ###############################################
 
 class UserLoginRecord(models.Model):
-    user = models.ForeignKey(UserProfile, verbose_name='用户')
+    user = models.ForeignKey(UserProfile, related_name='user_loginrecord',verbose_name='用户')
     agent = models.CharField(verbose_name='客户端', max_length=200, blank=True, null=True)
     city = models.CharField(verbose_name='登录区域', max_length=100, blank=True, null=True)
     ip = models.GenericIPAddressField(verbose_name='客户端IP', blank=True, null=True)
