@@ -11,14 +11,14 @@ from django.db.models import Q
 ########################################
 
 class UserDepartment(models.Model):
-    department_id = models.CharField(verbose_name='部门ID',max_length=10)
-    name = models.CharField(verbose_name='部门名称',max_length=50)
-    desc = models.CharField(verbose_name='部门描述',max_length=200,blank=True,null=True)
-    add_time = models.DateTimeField(verbose_name='添加时间',auto_now_add=True)
+    department_id = models.CharField(verbose_name='部门ID', max_length=10)
+    name = models.CharField(verbose_name='部门名称', max_length=50)
+    desc = models.CharField(verbose_name='部门描述', max_length=200, blank=True, null=True)
+    add_time = models.DateTimeField(verbose_name='添加时间', auto_now_add=True)
 
     class Meta:
-        verbose_name ='部门'
-        verbose_name_plural= verbose_name
+        verbose_name = '部门'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name
@@ -34,8 +34,8 @@ class UserPosition(models.Model):
     add_time = models.DateTimeField(verbose_name='添加时间', auto_now_add=True)
 
     class Meta:
-        verbose_name ='职位'
-        verbose_name_plural= verbose_name
+        verbose_name = '职位'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name

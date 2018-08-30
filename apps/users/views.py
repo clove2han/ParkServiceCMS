@@ -18,6 +18,7 @@ class UserDepartmentViewSet(viewsets.ModelViewSet):
         get = request.GET
         user_department= self.get_object()
         user_department.name = get.get('name')
+        user_department.desc = get.get('desc')
         user_department.save()
         return Response(user_department.name)
 
