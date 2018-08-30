@@ -28,7 +28,6 @@ urlpatterns = [
     url(r'', include('users.urls')),
 
     url(r'^api/', include('parkmanage.urls')),
-    url(r'^$',TemplateView.as_view(template_name='index.html')),
 
 ]
 

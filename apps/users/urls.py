@@ -2,14 +2,14 @@
 ########################################################################################################################
 ## Django 自带模块导入
 ########################################################################################################################
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 ########################################################################################################################
 ## 系统自带模块导入
 ########################################################################################################################
 from . import views
-
+from rest_framework.routers import DefaultRouter
 ########################################################################################################################
 ## 自建模块导入
 ########################################################################################################################
@@ -19,10 +19,13 @@ from . import views
 ## url
 ########################################################################################################################
 app_name = 'users'
+router = DefaultRouter()
+router.register(r'UserDepartment',views.UserDepartmentViewSet)
 
 urlpatterns = [
-    url(r'add_department', views.add_department, ),
-    url(r'show_department', views.show_department, ),
+
+    url(r'^', include(router.urls)),
+    # url(r'^test/$', views.get_department_view.as_view()),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
